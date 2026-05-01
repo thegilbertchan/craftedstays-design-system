@@ -479,7 +479,7 @@ The hero H1 uses `clamp(48px, 7.2vw, 96px)`. The fluid middle handles 90% of scr
 
 ## Voice and copy guidelines (cross-reference)
 
-The visual system pairs with a copy system already documented in `projects/landing-page-playbook-2026-04-14/README.md`. Highlights:
+The visual system pairs with a copy system. Highlights:
 - First-person founder voice; specific outcome metrics; quiet confidence; explicit disqualification of wrong-fit prospects.
 - Avoid: hype words, corporate buzzwords, mission statements, hobbyist signaling.
 - Strong frames: "Crafted for conversion, not just display"; "Built for the next era of short-term rentals."

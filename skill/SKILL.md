@@ -65,7 +65,7 @@ These are the brand's load-bearing constraints. Violating them produces a page t
 - **Outfit only.** Don't add a serif. Don't pair fonts. Hierarchy comes from size, weight (400/480/600), and color.
 - **Lucide icons only.** Never Font Awesome (currently being retired from craftedstays.co), never Heroicons, never Material, never emoji as a functional icon. Phosphor regular is the only allowed substitute when Lucide lacks a glyph.
 - **No dark mode.** Audience isn't tech-savvy; dark UIs alienate. Don't propose it as an option.
-- **No customer/property counts in copy.** "65% conversion lift" is fine; "200 property managers trust us" is forbidden. Hard rule from existing brand voice — see `feedback-avoid-exposing-scale.md`.
+- **No customer/property counts in copy.** "65% conversion lift" is fine; "200 property managers trust us" is forbidden. Hard rule from existing brand voice.
 - **Gradient on emphasis only.** Purple→coral text is for 2–4 word focal phrases inside a headline or CTA — never large blocks, never decorative.
 - **Borders, not shadows, define cards.** The only shadow allowed on a card is the inset on dark buttons. No drop shadows on cards. Hover states change `border-color` to `#D8D4C6`, no transform, no lift.
 - **Six-accent rotation is sacred.** When laying out icon-card grids, rotate `purple → coral → orange → teal → navy → red` in slot order. Slot 1 is always deep purple, always.
@@ -110,7 +110,7 @@ Skip sections that don't earn their keep. A focused 5-section page is better tha
 
 ## Voice and copy guidelines
 
-The visual system pairs with a copy voice that's already documented in `/Users/gilchan/Projects/gils personal assistant/projects/landing-page-playbook-2026-04-14/README.md` (if accessible). Highlights:
+The visual system pairs with a copy voice. Highlights:
 
 - First-person founder voice when narrative; outcome metrics over feature lists; quiet confidence over hype
 - Avoid: "thrilled," "excited," "leverage," "synergy," "unlock value," "disruptive," "magical"
