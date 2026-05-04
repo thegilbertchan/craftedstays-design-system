@@ -67,6 +67,32 @@
   .hero-sub{font-size:19px;line-height:1.55;color:var(--ink-60);max-width:60ch;margin:0 0 36px;font-weight:400}
   .hero-cta{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 
+  /* Install (no-code, copy-paste) */
+  .install{padding:64px 0 96px}
+  .install-card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:40px;display:grid;grid-template-columns:1fr;gap:36px}
+  @media (min-width:880px){.install-card{grid-template-columns:1.05fr 1fr;gap:48px;padding:48px}}
+  .install-head h2{font-family:'Outfit';font-weight:600;font-size:clamp(26px,3vw,34px);line-height:1.1;letter-spacing:-0.02em;margin:0 0 12px}
+  .install-head p{font-size:16px;color:var(--ink-60);line-height:1.55;margin:0 0 24px}
+  .copy-row{display:flex;align-items:stretch;gap:0;border:1px solid var(--line-strong);border-radius:10px;background:var(--cream);overflow:hidden;max-width:100%}
+  .copy-row input{flex:1;min-width:0;border:none;background:transparent;padding:14px 16px;font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--ink);outline:none}
+  .copy-row button{border:none;background:var(--ink);color:var(--paper);padding:0 20px;font-family:'Outfit';font-size:14px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:opacity .15s ease}
+  .copy-row button:hover{opacity:.9}
+  .copy-row button.copied{background:var(--purple)}
+  .copy-hint{font-size:12px;color:var(--ink-60);margin:10px 0 0;font-family:ui-monospace,Menlo,monospace}
+  .steps{list-style:none;padding:0;margin:0;counter-reset:step;display:flex;flex-direction:column;gap:18px}
+  .steps li{counter-increment:step;display:grid;grid-template-columns:36px 1fr;gap:14px;align-items:start}
+  .steps li::before{content:counter(step);grid-column:1;width:30px;height:30px;border-radius:50%;background:var(--cream-2);border:1px solid var(--line-strong);display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit';font-size:13px;font-weight:600;color:var(--ink);margin-top:1px}
+  .steps li:nth-child(1)::before{background:rgba(107,55,149,0.12);border-color:rgba(107,55,149,0.35);color:var(--purple)}
+  .steps li:nth-child(2)::before{background:rgba(231,90,105,0.12);border-color:rgba(231,90,105,0.35);color:var(--coral)}
+  .steps li:nth-child(3)::before{background:rgba(255,154,60,0.18);border-color:rgba(255,154,60,0.4);color:#B96A1F}
+  .steps .step-title{font-size:16px;font-weight:600;color:var(--ink);margin:0 0 4px;line-height:1.35}
+  .steps .step-body{font-size:14.5px;color:var(--ink-60);line-height:1.55;margin:0}
+  .steps a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--ink-40)}
+  .steps a:hover{text-decoration-color:var(--ink)}
+  .other-ways{margin-top:24px;padding-top:24px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-60);line-height:1.6}
+  .other-ways strong{color:var(--ink);font-weight:600}
+  .other-ways code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--cream);padding:1px 6px;border-radius:4px;border:1px solid var(--line)}
+
   /* Section */
   .section{padding:96px 0;border-top:1px solid var(--line)}
   .section-eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-60);margin-bottom:16px}
@@ -141,20 +167,64 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero-eyebrow">CraftedStays Design System · v1.0</div>
-    <h1>The visual language for the <span class="accent">next era</span> of short-term rentals.</h1>
-    <p class="hero-sub">Warm cream parchment, Outfit sans, Lucide icons, purple and coral brand identity. One DESIGN.md any AI tool can read. One reference page. One source of truth.</p>
+    <h1>Our brand, on tap for <span class="accent">every prototype</span> you build.</h1>
+    <p class="hero-sub">Plug this design system into Claude and every page, dashboard, or email you generate will look on-brand. No code. One link to copy.</p>
     <div class="hero-cta">
-      <a href="exemplar.html" class="btn btn-primary btn-arrow">View the exemplar</a>
-      <a href="DESIGN.md" class="btn btn-ghost">Read DESIGN.md</a>
+      <a href="#install" class="btn btn-primary btn-arrow">Install in Claude (1 min)</a>
+      <a href="exemplar.html" class="btn btn-ghost">See an example</a>
+    </div>
+  </div>
+</section>
+
+<section class="install" id="install">
+  <div class="wrap">
+    <div class="install-card">
+      <div class="install-head">
+        <div class="section-eyebrow" style="margin-bottom:14px">Get started</div>
+        <h2>Plug it into Claude in three steps.</h2>
+        <p>Claude Design lets you generate on-brand prototypes from a plain-language prompt. Paste this GitHub link in once and every prototype inherits our colors, fonts, and components automatically.</p>
+        <label class="copy-hint" for="repo-url">1. Copy this link</label>
+        <div class="copy-row">
+          <input id="repo-url" type="text" readonly value="https://github.com/thegilbertchan/craftedstays-design-system" aria-label="GitHub repo URL">
+          <button id="copy-btn" type="button" aria-label="Copy GitHub URL">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span id="copy-label">Copy link</span>
+          </button>
+        </div>
+        <p class="copy-hint">github.com/thegilbertchan/craftedstays-design-system</p>
+      </div>
+      <ol class="steps">
+        <li>
+          <div>
+            <p class="step-title">Open Claude Design</p>
+            <p class="step-body">Go to <a href="https://claude.ai/design" target="_blank" rel="noopener">claude.ai/design</a> and click <strong>Create new design system</strong>.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <p class="step-title">Paste the link</p>
+            <p class="step-body">In the <em>Link code on GitHub</em> field, paste the URL you just copied. Claude will read our DESIGN.md, fonts, and reference page automatically.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <p class="step-title">Start prompting</p>
+            <p class="step-body">Try: <em>"Build a CraftedStays pricing page with three tiers."</em> Every prototype from now on will be on-brand.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+    <div class="other-ways">
+      <strong>Not using Claude Design?</strong> &nbsp;You can also paste the same GitHub link into <strong>Cursor</strong>, <strong>Lovable</strong>, <strong>v0</strong>, or any AI tool that accepts a repo URL. Engineers using <strong>Claude Code</strong> can install the bundled skill — see <a href="https://github.com/thegilbertchan/craftedstays-design-system#-for-claude-code-cli" target="_blank" rel="noopener">README</a>.
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <div class="section-eyebrow">What's in the system</div>
+    <div class="section-eyebrow">What's inside</div>
     <h2 class="section-title">Six artifacts. One source of truth.</h2>
-    <p class="section-lede">Everything anyone needs to design, build, or generate on-brand UI for CraftedStays. Drop into Claude Design, Cursor, Lovable, or hand to a designer.</p>
+    <p class="section-lede">When you paste the GitHub link into Claude, this is what it reads. You don't need to open any of these files yourself — but they're here if you're curious.</p>
     <div class="grid">
       <a href="DESIGN.md" class="card">
         <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
@@ -232,11 +302,11 @@
 
 <section class="section">
   <div class="wrap" style="text-align:center">
-    <h2 class="section-title">Use it however you want.</h2>
-    <p class="section-lede" style="margin-left:auto;margin-right:auto">Read the spec, view the exemplar, install the fonts, install the Claude Code skill. The whole system is one URL and one markdown file.</p>
+    <h2 class="section-title">Ready? It really is one link.</h2>
+    <p class="section-lede" style="margin-left:auto;margin-right:auto">Copy the GitHub URL, paste it into Claude Design, and start prompting. Anything you generate will look like CraftedStays.</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <a href="exemplar.html" class="btn btn-primary btn-arrow">View the exemplar</a>
-      <a href="https://github.com/thegilbertchan/craftedstays-design-system" class="btn btn-ghost">View on GitHub</a>
+      <a href="#install" class="btn btn-primary btn-arrow">Install in Claude</a>
+      <a href="exemplar.html" class="btn btn-ghost">See an example</a>
     </div>
   </div>
 </section>
@@ -254,5 +324,27 @@
     </div>
   </div>
 </footer>
+<script>
+  (function(){
+    var btn=document.getElementById('copy-btn');
+    var input=document.getElementById('repo-url');
+    var label=document.getElementById('copy-label');
+    if(!btn||!input||!label)return;
+    btn.addEventListener('click',function(){
+      var done=function(){
+        btn.classList.add('copied');
+        label.textContent='Copied';
+        setTimeout(function(){btn.classList.remove('copied');label.textContent='Copy link';},1800);
+      };
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(input.value).then(done).catch(function(){
+          input.select();document.execCommand('copy');done();
+        });
+      }else{
+        input.select();document.execCommand('copy');done();
+      }
+    });
+  })();
+</script>
 </body>
 </html>
