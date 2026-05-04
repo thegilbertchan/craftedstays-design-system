@@ -41,11 +41,8 @@
   /* Nav */
   .nav{padding:24px 0}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:44px}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:18px;letter-spacing:-0.02em}
-  .logo-mark{width:24px;height:24px;position:relative;flex-shrink:0}
-  .logo-mark::before,.logo-mark::after{content:"";position:absolute;width:16px;height:16px;border:2.5px solid var(--purple);border-radius:50%}
-  .logo-mark::before{left:0;top:4px}
-  .logo-mark::after{right:0;top:4px;border-color:var(--coral)}
+  .logo{display:flex;align-items:center}
+  .logo img{height:28px;width:auto;display:block}
   .nav-links{display:flex;gap:24px;align-items:center}
   .nav a{color:var(--ink);text-decoration:none;font-size:14px;font-weight:400}
   .nav a:hover{text-decoration:underline;text-underline-offset:3px}
@@ -124,10 +121,7 @@
   .foot{padding:48px 0 32px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-60)}
   .foot-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
   .foot-mark{display:flex;align-items:center;gap:10px}
-  .foot-mark .logo-mark{width:18px;height:18px}
-  .foot-mark .logo-mark::before,.foot-mark .logo-mark::after{width:12px;height:12px;border-width:2px}
-  .foot-mark .logo-mark::before{left:0;top:3px}
-  .foot-mark .logo-mark::after{right:0;top:3px}
+  .foot-mark img{height:20px;width:auto;display:block}
   .foot a{color:var(--ink-60);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--ink-40)}
   .foot a:hover{color:var(--ink)}
 </style>
@@ -135,7 +129,7 @@
 <body>
 <header class="nav">
   <div class="wrap nav-inner">
-    <div class="logo"><span class="logo-mark"></span>CraftedStays</div>
+    <a href="/" class="logo" aria-label="CraftedStays"><img src="lg_dark.svg" alt="CraftedStays"></a>
     <div class="nav-links">
       <a href="DESIGN.md">DESIGN.md</a>
       <a href="exemplar.html">Exemplar</a>
@@ -250,7 +244,7 @@
 <footer class="foot">
   <div class="wrap foot-inner">
     <div class="foot-mark">
-      <span class="logo-mark"></span>
+      <img src="mark_dark.svg" alt="CraftedStays">
       <span>© 2026 CraftedStays · Crafted in California</span>
     </div>
     <div>

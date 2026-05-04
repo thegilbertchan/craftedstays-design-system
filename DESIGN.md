@@ -249,7 +249,7 @@ outline: none;
 
 ### Navigation
 - Padding: `20px 0`. Background: `--cream` (matches page; no border by default).
-- Logo: `.logo-mark` (24px interlocking circles, purple + coral) + wordmark "CraftedStays" in Outfit 600 18px.
+- Logo: **always use the official SVG lockup** at `lg_dark.svg` (full mark + "CraftedStays" wordmark, vector). Render at `height: 28px; width: auto`. **Do not** redraw the mark in CSS, in Canvas, or as inline `<path>`s, and **do not** hand-set the wordmark in Outfit text — the official asset is the only correct logo.
 - Links: 14px, weight 400, ink. Hover = underline.
 - Right side: ghost "Sign in" + primary "Get started".
 
@@ -283,9 +283,9 @@ outline: none;
 ### Footer
 - Padding: `64px 0 32px`. Background: `--cream-2`. Border-top: `1px solid --line`.
 - **Top: 4-column grid** `1.6fr 1fr 1fr 1fr`, 48px gap, 48px bottom margin.
-  - Col 1 (brand, 1.6×): logo + tagline + contact block (email, phone) + address block + social row.
+  - Col 1 (brand, 1.6×): full logo lockup (`lg_dark.svg`, 28px tall) + tagline + contact block (email, phone) + address block + social row.
   - Col 2–4 (link cols): h4 (13px uppercase) + ul of 14px ink-60 links, 11px row gap.
-- **Bottom row:** 1px top border, 28px top padding. Logo mark + © line on the left, legal links pushed right (24px gap).
+- **Bottom row:** 1px top border, 28px top padding. Mark-only logo (`mark_dark.svg`, 20px tall) + © line on the left, legal links pushed right (24px gap).
 - **Social icons:** 32px circular pill, hairline border, paper bg, 14px Lucide glyph in ink-60 (LinkedIn, X, YouTube).
 
 ### Atmospheric backgrounds
@@ -325,21 +325,25 @@ The system uses **soft radial-gradient washes** at low opacity to give certain s
 | Container | `16px` | Hero mockup wrapper, large surfaces |
 | Generous | `24px` | Icon cards (6-up) — the Lovable founders pattern |
 
-### Logo mark (interlocking rings)
-The system's signature decorative element. Render as two overlapping circle outlines:
-```css
-.logo-mark { width: 24px; height: 24px; position: relative; }
-.logo-mark::before, .logo-mark::after {
-  content: ""; position: absolute;
-  width: 16px; height: 16px;
-  border: 2.5px solid var(--purple);
-  border-radius: 50%;
-}
-.logo-mark::before { left: 0; top: 4px; }
-.logo-mark::after { right: 0; top: 4px; border-color: var(--coral); }
-```
-- Scale by adjusting the wrapper size; ring sizes scale proportionally (0.66× wrapper).
-- 18px wrapper → 12px rings (footer bottom, small UI). 24px wrapper → 16px rings (default).
+### Logo (official asset only)
+The CraftedStays logo is **always the official asset file**, never CSS-redrawn rings, never hand-set Outfit text, never an `<svg>` approximation. Two files ship at the repo root:
+
+| File | Use |
+|------|-----|
+| `lg_dark.svg` | Default. Full lockup (interlocking rings + "CraftedStays" wordmark in dark ink) on cream/light backgrounds. Vector — scales without loss. |
+| `mark_dark.svg` | Mark only (interlocking purple+coral rings, no wordmark). Use in compact contexts: footer bottom row, favicon, social avatars, small UI chrome. Vector — scales without loss. |
+
+**Sizing:**
+- Nav full lockup: `height: 28px; width: auto`.
+- Footer brand-column lockup: `height: 28px`.
+- Footer bottom-row mark: `height: 20px`.
+- Mark-only icon use: never below 16px.
+
+**Rules:**
+- ❌ **Never** redraw the rings in CSS, inline SVG `<path>`s, or Canvas. The hairline two-circle CSS pattern previously used in early mockups is retired — it reads as thin and underweight next to the real mark.
+- ❌ **Never** typeset "CraftedStays" next to a separate mark. The wordmark is part of the `lg_dark.svg` lockup; pairing the mark with hand-set Outfit text breaks the kerning, baseline, and weight relationship that's already locked in the asset.
+- ❌ **Never** recolor or restyle the logo. The dark lockup is for cream/light surfaces — that's the only context this system ships.
+- ✅ Reference the SVG via `<img src="lg_dark.svg" alt="CraftedStays">`. CSS-styled `<img>` is fine; manipulating the file's internal paths is not.
 
 ---
 
@@ -391,6 +395,7 @@ The depth system is **intentionally shallow**. The brand says "crafted, consider
 - ❌ **Don't pair the hero pill eyebrow with a section eyebrow.** Pill is for hero only; line-prefix eyebrow is for sections.
 - ❌ **Don't use saturated accent colors as backgrounds.** Brand colors live in icons, gradient text, and tiny accent dots — never as fill.
 - ❌ **Don't increase letter-spacing on headlines.** Outfit is designed to compress at scale. Always negative or normal, never positive.
+- ❌ **Don't redraw the logo in CSS or inline SVG paths.** The official lockup (`lg_dark.svg`) and mark (`mark_dark.svg`) are the only correct logo. The thin-CSS-rings + Outfit-text combo previously used in mockups is retired.
 
 ---
 
@@ -463,7 +468,7 @@ The hero H1 uses `clamp(48px, 7.2vw, 96px)`. The fluid middle handles 90% of scr
 
 > "Build a newsletter strip. Background: `#FCFBF8` (paper), 1px top border, 64px 0 padding. 2-column grid: 1.2fr 1fr, 48px gap, align center. Left: h3 28px Outfit weight 600 + 15px ink-60 description. Right: email input (1px line border, 8px radius, 11/16 padding, focus ring 3px ink/05) + primary dark button with inset shadow."
 
-> "Build a 4-column footer. Background: `#F2EFE6` (cream-2), 64/0/32 padding. Grid: 1.6fr 1fr 1fr 1fr, 48px gap. Col 1 (brand): logo-mark (24px interlocking purple+coral rings) + wordmark + 32ch tagline + contact block (label + email + phone) + address block + social row (32px circular pills, Lucide glyphs, ink-60). Cols 2–4: h4 13px uppercase + ul of 14px ink-60 links with 11px row gap. Bottom row: 1px top border, 28px top padding, logo-mark + copyright line on left, legal links pushed right."
+> "Build a 4-column footer. Background: `#F2EFE6` (cream-2), 64/0/32 padding. Grid: 1.6fr 1fr 1fr 1fr, 48px gap. Col 1 (brand): full CraftedStays logo lockup from `lg_dark.svg` at 28px tall (do not redraw the mark in CSS or hand-set the wordmark) + 32ch tagline + contact block (label + email + phone) + address block + social row (32px circular pills, Lucide glyphs, ink-60). Cols 2–4: h4 13px uppercase + ul of 14px ink-60 links with 11px row gap. Bottom row: 1px top border, 28px top padding, mark-only logo from `mark_dark.svg` at 20px tall + copyright line on left, legal links pushed right."
 
 ### Iteration guide
 1. **Always start with the cream.** `#F7F4ED` is non-negotiable as the page background.

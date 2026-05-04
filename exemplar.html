@@ -50,11 +50,8 @@
   /* Nav */
   .nav{padding:20px 0;background:var(--cream)}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:48px}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:18px;letter-spacing:-0.02em}
-  .logo-mark{width:24px;height:24px;position:relative;flex-shrink:0}
-  .logo-mark::before,.logo-mark::after{content:"";position:absolute;width:16px;height:16px;border:2.5px solid var(--purple);border-radius:50%}
-  .logo-mark::before{left:0;top:4px}
-  .logo-mark::after{right:0;top:4px;border-color:var(--coral)}
+  .logo{display:flex;align-items:center}
+  .logo img{height:28px;width:auto;display:block}
   .nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:14px;font-weight:400}
   .nav-links a{color:var(--ink);text-decoration:none}
   .nav-links a:hover{text-decoration:underline}
@@ -175,7 +172,8 @@
   /* Footer (multi-column) */
   .foot{padding:64px 0 32px;background:var(--cream-2);border-top:1px solid var(--line);color:var(--ink-60);font-size:14px}
   .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
-  .foot-brand .logo{font-family:'Outfit';font-weight:600;font-size:18px;color:var(--ink);margin-bottom:16px}
+  .foot-brand .logo{margin-bottom:16px}
+  .foot-brand .logo img{height:28px;width:auto;display:block}
   .foot-brand p{font-size:14px;color:var(--ink-60);line-height:1.6;margin:0 0 24px;max-width:32ch}
   .foot-contact{display:flex;flex-direction:column;gap:6px;margin-bottom:24px}
   .foot-contact-label{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-40);margin-bottom:2px}
@@ -194,10 +192,7 @@
 
   .foot-bottom{padding-top:28px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-size:13px}
   .foot-bottom-left{display:flex;align-items:center;gap:12px}
-  .foot-bottom-left .logo-mark{width:18px;height:18px}
-  .foot-bottom-left .logo-mark::before,.foot-bottom-left .logo-mark::after{width:12px;height:12px;border-width:2px}
-  .foot-bottom-left .logo-mark::before{left:0;top:3px}
-  .foot-bottom-left .logo-mark::after{right:0;top:3px}
+  .foot-bottom-left img{height:20px;width:auto;display:block}
   .foot-bottom-links{display:flex;gap:24px;list-style:none;margin:0;padding:0}
   .foot-bottom-links a{color:var(--ink-60);text-decoration:none}
   .foot-bottom-links a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
@@ -208,7 +203,7 @@
 
 <header class="nav">
   <div class="wrap nav-inner">
-    <div class="logo"><span class="logo-mark"></span>CraftedStays</div>
+    <a href="/" class="logo" aria-label="CraftedStays"><img src="lg_dark.svg" alt="CraftedStays"></a>
     <ul class="nav-links">
       <li><a href="#">Platform</a></li>
       <li><a href="#">Integrations</a></li>
@@ -368,7 +363,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <div class="logo"><span class="logo-mark"></span>CraftedStays</div>
+        <a href="/" class="logo" aria-label="CraftedStays"><img src="lg_dark.svg" alt="CraftedStays"></a>
         <p>Direct booking infrastructure for serious short-term rental operators. PMS-native, AI-aware, crafted to convert.</p>
 
         <div class="foot-contact">
@@ -431,7 +426,7 @@
 
     <div class="foot-bottom">
       <div class="foot-bottom-left">
-        <span class="logo-mark"></span>
+        <img src="mark_dark.svg" alt="CraftedStays">
         <span>© 2026 CraftedStays · Crafted in California</span>
       </div>
       <ul class="foot-bottom-links">
