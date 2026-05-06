@@ -46,18 +46,3 @@ function craftedstays_body_class( $classes ) {
 }
 add_filter( 'body_class', 'craftedstays_body_class' );
 
-/**
- * Wrap Elementor canvas page content in `cs-page-region` so all the
- * .cs-page-region scoped rules apply automatically. Restricted to
- * `elementor_canvas` template so existing pages on `elementor_header_footer`
- * (homepage, partner pages built before the design system) stay untouched.
- *
- * Future opt-in: set the page template to `elementor_canvas` to inherit
- * the design system. No explicit per-section class needed.
- */
-function craftedstays_wrap_elementor_content( $content ) {
-    if ( ! is_page() ) return $content;
-    if ( get_page_template_slug() !== 'elementor_canvas' ) return $content;
-    return '<div class="cs-page-region">' . $content . '</div>';
-}
-add_filter( 'the_content', 'craftedstays_wrap_elementor_content', 99 );
