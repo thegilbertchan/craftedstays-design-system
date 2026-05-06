@@ -1,0 +1,331 @@
+/*
+Theme Name: CraftedStays (Astra Child)
+Theme URI: https://github.com/thegilbertchan/craftedstays-design-system
+Description: Child theme for craftedstays.co. Bakes the locked CraftedStays design system into Astra: warm cream parchment, Outfit, Lucide icons, purple/coral brand identity. Spec: DESIGN.md in repo.
+Author: CraftedStays
+Author URI: https://craftedstays.co
+Template: astra
+Version: 1.0.8
+Text Domain: craftedstays-child
+*/
+
+/* ============================================================
+   1. DESIGN SYSTEM TOKENS
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;480;500;600;700&display=swap');
+
+:root {
+  --cream: #F7F4ED;
+  --cream-2: #F2EFE6;
+  --paper: #FCFBF8;
+  --ink: #1C1C1C;
+  --ink-83: rgba(28,28,28,0.83);
+  --ink-60: #5F5F5D;
+  --ink-40: rgba(28,28,28,0.40);
+  --ink-12: rgba(28,28,28,0.12);
+  --ink-04: rgba(28,28,28,0.04);
+  --line: #ECEAE4;
+  --line-strong: #D8D4C6;
+  --purple: #6B3795;
+  --coral: #E75A69;
+  --orange: #FF9A3C;
+  --teal: #4ECDC4;
+  --navy: #2E86AB;
+  --red: #D93A4B;
+  --grad: linear-gradient(95deg, #6B3795 0%, #E75A69 100%);
+  --inset: inset 0 0.5px 0 0 rgba(255,255,255,.2), inset 0 0 0 0.5px rgba(0,0,0,.2), 0 1px 2px 0 rgba(0,0,0,.05);
+  --max: 1240px;
+}
+
+/* ============================================================
+   2. BASELINE — opt pages into the design system
+   Pages using design-system patterns get class `cs-page` on body
+   or any ancestor; rules below scope to that.
+   ============================================================ */
+body.cs-page,
+body .cs-page-region {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   3. ELEMENTOR DEFENSIVE OVERRIDES
+   Neutralize Elementor + Astra widget defaults that fight the
+   design system. Scoped to .cs-page-region so we don't touch
+   pages that aren't using the system.
+   ============================================================ */
+.cs-page-region .elementor-section .elementor-container { padding: 0; max-width: var(--max); margin-left: auto; margin-right: auto; }
+.cs-page-region .elementor-widget { margin: 0 !important; }
+.cs-page-region .elementor-widget-heading .elementor-heading-title { margin: 0 !important; padding: 0 !important; line-height: inherit; font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif; color: var(--ink); }
+.cs-page-region .elementor-widget-text-editor p { margin: 0; }
+.cs-page-region .elementor-widget-text-editor p + p { margin-top: 0.8em; }
+.cs-page-region .elementor-widget-button .elementor-button-wrapper { line-height: 1; }
+.cs-page-region .elementor-widget-image img { display: block; }
+.cs-page-region .elementor-widget-html { line-height: normal; }
+
+/* Heading widget gradient accent — wrap a phrase in <span class="accent"> */
+.cs-page-region .elementor-heading-title .accent {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+/* ============================================================
+   4. TYPOGRAPHY UTILITIES
+   ============================================================ */
+.cs-page-region .cs-hero-h1 .elementor-heading-title { font-weight: 480; font-size: clamp(48px, 7.2vw, 96px); line-height: 1.0 !important; letter-spacing: -0.025em; max-width: 18ch; }
+.cs-page-region .cs-section-title .elementor-heading-title { font-weight: 600; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.05 !important; letter-spacing: -0.025em; }
+.cs-page-region .cs-cta-h2 .elementor-heading-title { font-weight: 600; font-size: clamp(36px, 5vw, 68px); line-height: 1.0 !important; letter-spacing: -0.025em; max-width: 18ch; margin: 0 auto !important; }
+
+.cs-page-region .cs-hero-sub { font-size: 19px; line-height: 1.55; color: var(--ink-60); max-width: 75ch; }
+.cs-page-region .cs-hero-sub p { margin: 0; }
+.cs-page-region .cs-section-sub { font-size: 18px; line-height: 1.55; color: var(--ink-60); max-width: 64ch; }
+.cs-page-region .cs-section-sub p { margin: 0; }
+
+.cs-page-region .cs-eyebrow .elementor-heading-title { font-size: 12px !important; font-weight: 600 !important; color: var(--ink-60) !important; text-transform: uppercase !important; letter-spacing: 0.14em !important; display: inline-flex; align-items: center; line-height: 1.4 !important; }
+.cs-page-region .cs-eyebrow .elementor-heading-title::before { content: ""; display: inline-block; width: 14px; height: 1px; background: var(--ink-40); margin-right: 10px; }
+
+/* ============================================================
+   5. PILL EYEBROW (hero)
+   ============================================================ */
+.cs-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: var(--paper); border: 1px solid var(--line); font-size: 13px; font-weight: 400; color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.03); }
+.cs-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--grad); }
+
+/* ============================================================
+   6. BUTTONS — inline-styled fallbacks for HTML-widget contexts
+   ============================================================ */
+.cs-btn { font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif; font-size: 15px; font-weight: 400; padding: 10px 20px; border-radius: 6px; text-decoration: none; line-height: 1.4; display: inline-flex; align-items: center; gap: 6px; border: none; cursor: pointer; transition: background-color 150ms ease; }
+.cs-btn-primary { background: var(--ink); color: var(--paper); box-shadow: var(--inset); }
+.cs-btn-primary:hover, .cs-btn-primary:focus, .cs-btn-primary:active { background: var(--purple) !important; color: var(--paper) !important; text-decoration: none !important; }
+.cs-btn-primary[disabled] { opacity: 0.6; cursor: not-allowed; background: var(--ink) !important; }
+.cs-btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink-40); }
+.cs-btn-ghost:hover, .cs-btn-ghost:focus, .cs-btn-ghost:active { color: var(--ink) !important; background: rgba(28,28,28,0.06) !important; border-color: rgba(28,28,28,0.6) !important; text-decoration: none !important; }
+.cs-btn-arrow::after { content: " →"; transition: transform 150ms ease; display: inline-block; }
+.cs-btn-arrow:hover::after { transform: translateX(2px); }
+
+/* Inline link with underline-offset (for tertiary actions) */
+.cs-link-inline { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--ink-40); text-decoration-thickness: 1px; font-size: 14px; font-weight: 400; }
+.cs-link-inline:hover { text-decoration-color: var(--ink); }
+.cs-dot { display: inline-block; width: 3px; height: 3px; background: var(--ink-40); border-radius: 50%; margin: 0 12px; vertical-align: middle; }
+
+/* ============================================================
+   7. STAT BLOCK (4-up bar)
+   ============================================================ */
+.cs-page-region .cs-stat-num .elementor-heading-title { font-size: 44px !important; font-weight: 600 !important; line-height: 1.0 !important; letter-spacing: -0.025em !important; color: var(--ink) !important; }
+.cs-page-region .cs-stat-label { font-size: 13px; color: var(--ink-60); line-height: 1.5; }
+.cs-page-region .cs-stat-label p { margin: 0; }
+
+/* ============================================================
+   8. CARDS
+   ============================================================ */
+/* Quadrant card (2x2 feature) */
+.cs-page-region .elementor-column.cs-qcard { background: var(--cream) !important; border: 1px solid var(--line) !important; border-radius: 16px !important; padding: 36px !important; transition: border-color 150ms ease; }
+.cs-page-region .elementor-column.cs-qcard:hover { border-color: var(--line-strong) !important; }
+.cs-page-region .cs-qcard h3.elementor-heading-title { font-size: 22px !important; font-weight: 600 !important; letter-spacing: -0.02em !important; line-height: 1.2 !important; margin: 12px 0 !important; color: var(--ink) !important; }
+.cs-qcard-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: inherit; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 20px; }
+.cs-qcard-tag .ring { width: 12px; height: 12px; border-radius: 50%; border: 2px solid currentColor; }
+.cs-page-region .cs-qcard .cs-qbody p { font-size: 15px !important; line-height: 1.6 !important; color: var(--ink-60) !important; margin: 0 !important; }
+.cs-page-region .cs-qcard .cs-qbody a, .cs-page-region .cs-qcard .cs-qbody a:hover, .cs-page-region .cs-qcard .cs-qbody a:focus { color: var(--ink) !important; text-decoration: underline !important; text-underline-offset: 3px !important; text-decoration-color: var(--ink-40) !important; }
+
+/* Methodology card */
+.cs-page-region .elementor-column.cs-method-card { background: var(--cream-2) !important; border: 1px solid var(--line) !important; border-radius: 16px !important; padding: 32px !important; }
+.cs-page-region .cs-method-card h4.elementor-heading-title { font-size: 12px !important; font-weight: 600 !important; color: var(--ink-60) !important; text-transform: uppercase !important; letter-spacing: 0.14em !important; margin: 0 0 16px !important; line-height: 1.4 !important; }
+.cs-page-region .cs-method-card .cs-method-body p { font-size: 15px !important; color: var(--ink) !important; line-height: 1.6 !important; margin: 0 !important; }
+.cs-page-region .cs-method-card .cs-method-body code { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 13px; background: var(--paper); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--line); color: var(--ink); }
+
+/* Feature card (3-up) — interlocking-ring icon variant from design system */
+.cs-page-region .elementor-column.cs-feature-card { background: var(--cream) !important; border: 1px solid var(--line) !important; border-radius: 12px !important; padding: 32px !important; transition: border-color 150ms ease; }
+.cs-page-region .elementor-column.cs-feature-card:hover { border-color: var(--line-strong) !important; }
+
+/* Icon card (6-up Lucide-glyph variant) */
+.cs-page-region .elementor-column.cs-icon-card { background: var(--cream-2) !important; border: 1px solid var(--line) !important; border-radius: 24px !important; padding: 36px 32px 32px !important; transition: border-color 150ms ease; }
+.cs-page-region .elementor-column.cs-icon-card:hover { border-color: var(--line-strong) !important; }
+
+/* ============================================================
+   9. QUOTE SECTION
+   ============================================================ */
+.cs-page-region .cs-quote-h3 .elementor-heading-title { font-size: 28px !important; font-weight: 500 !important; line-height: 1.2 !important; letter-spacing: -0.015em !important; color: var(--ink) !important; }
+
+/* ============================================================
+   10. SECTION ATMOSPHERIC WASHES
+   ============================================================ */
+.cs-page-region .cs-hero-section { position: relative; overflow: hidden; }
+.cs-page-region .cs-hero-section::before { content: ""; position: absolute; inset: 0; background: radial-gradient(55% 45% at 82% 18%, rgba(231,90,105,0.10), transparent 60%), radial-gradient(50% 40% at 12% 30%, rgba(107,55,149,0.08), transparent 65%); pointer-events: none; z-index: 0; }
+.cs-page-region .cs-hero-section .elementor-container { position: relative; z-index: 1; }
+
+.cs-page-region .cs-cta-section { position: relative; overflow: hidden; }
+.cs-page-region .cs-cta-section::before { content: ""; position: absolute; inset: 0; background: radial-gradient(50% 50% at 50% 50%, rgba(231,90,105,0.08), transparent 70%), radial-gradient(60% 60% at 50% 50%, rgba(107,55,149,0.05), transparent 70%); pointer-events: none; z-index: 0; }
+.cs-page-region .cs-cta-section .elementor-container { position: relative; z-index: 1; }
+
+/* CTA closer subhead — center the inner container (where width applies) and the text inside */
+.cs-page-region .cs-cta-sub > .elementor-widget-container { max-width: 50ch; margin: 0 auto; text-align: center; }
+.cs-page-region .cs-cta-sub p { font-size: 18px; color: var(--ink-60); line-height: 1.55; margin: 0; text-align: center; }
+
+/* Stats bar borders */
+.cs-page-region .cs-stats-section { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+/* Paper section borders (used on quote, peer set, cliff sections) */
+.cs-page-region .cs-paper-section { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+/* Newsletter section top border */
+.cs-page-region .cs-newsletter-section { border-top: 1px solid var(--line); }
+.cs-page-region .cs-newsletter-h3 .elementor-heading-title { font-size: 28px !important; font-weight: 600 !important; letter-spacing: -0.02em !important; line-height: 1.15 !important; margin: 0 0 8px !important; color: var(--ink) !important; }
+.cs-page-region .cs-newsletter-sub p { font-size: 15px; color: var(--ink-60); margin: 0; line-height: 1.55; }
+
+/* ============================================================
+   11. FOOTER
+   ============================================================ */
+.cs-page-region .cs-footer-section { background: var(--cream-2); border-top: 1px solid var(--line); }
+.cs-page-region .cs-footer-tag p { font-size: 14px; color: var(--ink-60); line-height: 1.55; max-width: 32ch; margin: 20px 0; }
+.cs-page-region .cs-footer-h4 .elementor-heading-title { font-size: 13px !important; font-weight: 600 !important; text-transform: uppercase !important; letter-spacing: 0.06em !important; margin: 0 0 16px !important; color: var(--ink) !important; }
+
+/* Footer link list — neutralize Astra's <li> defaults */
+.cs-page-region .cs-footer-links ul { display: grid !important; gap: 11px !important; margin: 0 !important; padding: 0 !important; list-style: none !important; }
+.cs-page-region .cs-footer-links ul li { margin: 0 !important; padding: 0 !important; line-height: 1.4 !important; }
+.cs-page-region .cs-footer-links a { color: var(--ink-60); text-decoration: none; font-size: 14px; }
+.cs-page-region .cs-footer-links a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ============================================================
+   12. NEWSLETTER FORM (custom posts to HubSpot Forms API)
+   ============================================================ */
+.cs-news-form { display: grid; grid-template-columns: 1fr 1.4fr auto; gap: 8px; align-items: stretch; }
+.cs-news-form input { padding: 11px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif; font-size: 15px; color: var(--ink); outline: none; width: 100%; box-sizing: border-box; }
+.cs-news-form input::placeholder { color: var(--ink-40); }
+.cs-news-form input:focus { border-color: var(--ink-40); box-shadow: 0 0 0 3px rgba(28,28,28,.05); }
+.cs-news-form button { font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif; font-size: 15px; font-weight: 400; padding: 11px 20px; border-radius: 6px; border: none; background: var(--ink); color: var(--paper); box-shadow: var(--inset); cursor: pointer; white-space: nowrap; transition: background-color 150ms ease; }
+.cs-news-form button:hover, .cs-news-form button:focus { background: var(--purple) !important; color: var(--paper) !important; }
+.cs-news-form button:active { background: var(--purple) !important; opacity: 0.85; }
+.cs-news-form button:disabled { opacity: 0.6; cursor: not-allowed; background: var(--ink) !important; }
+.cs-news-msg { margin-top: 10px; font-size: 14px; min-height: 18px; }
+.cs-news-msg.error { color: var(--red); }
+.cs-news-msg.success { color: var(--ink); }
+@media (max-width: 640px) { .cs-news-form { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   13. RESPONSIVE COLLAPSES
+   ============================================================ */
+@media (max-width: 1024px) {
+  .cs-page-region .quadrant-grid, .cs-page-region .peer-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   14. PARTNER PAGE PATTERNS (added in v1.0.2)
+   Reusable across /partners/{guesty,hostaway,hospitable,...} —
+   put the structural HTML in the page, the styling here.
+   ============================================================ */
+
+/* Hero 2-col grid (text + integration card) */
+.cs-page-region .cs-hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: center; }
+@media (max-width: 1024px) { .cs-page-region .cs-hero-grid { grid-template-columns: 1fr; gap: 48px; } }
+/* When the hero is inside a 2-col grid (partner pages), scale H1 down so it doesn't wrap to 4 lines */
+.cs-page-region .cs-hero-section.cs-hero-2col .cs-hero-h1 .elementor-heading-title { font-size: clamp(40px, 5.6vw, 72px) !important; max-width: 14ch !important; line-height: 1.05 !important; }
+/* Tight sub cap inside the 2-col grid (right rail is the integration card; left text column is naturally narrow) */
+.cs-page-region .cs-hero-section.cs-hero-2col .cs-hero-sub { max-width: 58ch; }
+
+/* Hero promo pill (partner pricing badge under CTAs) */
+.cs-page-region .cs-hero-promo { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; font-size: 14px; color: var(--ink); }
+.cs-page-region .cs-hero-promo strong { color: var(--ink); font-weight: 600; }
+.cs-page-region .cs-hero-promo .promo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); flex: none; }
+
+/* Integration card — used in hero right rail to show what syncs */
+.cs-page-region .cs-integration-card { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; padding: 36px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+.cs-page-region .cs-integration-card h3 { font-size: 18px; font-weight: 600; margin: 0 0 6px; letter-spacing: -0.01em; color: var(--ink); }
+.cs-page-region .cs-integration-card .sub { font-size: 13px; color: var(--ink-60); margin: 0 0 24px; line-height: 1.55; }
+.cs-page-region .cs-integration-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.cs-page-region .cs-integration-row:last-child { border-bottom: none; }
+.cs-page-region .cs-integration-row svg { flex: none; color: var(--purple); }
+.cs-page-region .cs-integration-row .label { color: var(--ink); flex: 1; }
+.cs-page-region .cs-integration-row .check { color: var(--purple); font-weight: 600; }
+
+/* 3-up feature cards (interlocking-ring icon variant) — used in Why + AEO sections */
+.cs-page-region .cs-feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 1024px) { .cs-page-region .cs-feature-grid { grid-template-columns: 1fr; } }
+.cs-page-region .cs-feature-card { background: var(--cream); border: 1px solid var(--line); border-radius: 12px; padding: 32px; transition: border-color 150ms ease; }
+.cs-page-region .cs-feature-card:hover { border-color: var(--line-strong); }
+.cs-page-region .cs-feature-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--paper); border: 1px solid var(--line); box-shadow: var(--inset); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+.cs-page-region .cs-feature-icon .ring { width: 16px; height: 16px; border-radius: 50%; border: 2px solid; }
+.cs-page-region .cs-feature-card h3 { font-size: 20px; font-weight: 500; line-height: 1.25; letter-spacing: -0.01em; margin: 0 0 12px; color: var(--ink); }
+.cs-page-region .cs-feature-card p { font-size: 15px; line-height: 1.6; color: var(--ink-60); margin: 0; }
+.cs-page-region .cs-feature-card a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--ink-40); }
+
+/* 3-up option/signal cards (check/X list, featured variant) — When Fits + Three Ways To Launch */
+.cs-page-region .cs-options-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 1024px) { .cs-page-region .cs-options-grid { grid-template-columns: 1fr; } }
+.cs-page-region .cs-option-card { background: var(--cream); border: 1px solid var(--line); border-radius: 16px; padding: 36px; transition: border-color 150ms ease; }
+.cs-page-region .cs-option-card:hover { border-color: var(--line-strong); }
+.cs-page-region .cs-option-card.featured { border: 2px solid var(--ink); box-shadow: 0 4px 12px rgba(0,0,0,0.03); position: relative; overflow: visible; }
+/* Featured badge sits in its own widget. Make the widget itself absolutely positioned so the badge overhangs the top border of the card. Use descendant combinator since Elementor inserts wrappers between the column and widget. */
+.cs-page-region .cs-option-card.featured .elementor-widget-html.cs-featured-badge-wrap { position: absolute !important; top: -14px !important; left: 30px !important; z-index: 5; width: auto !important; margin: 0 !important; }
+/* Make sure no positioning intermediary breaks the absolute anchor — column-wrap should be static so badge anchors to .cs-option-card.featured (position: relative). */
+.cs-page-region .cs-option-card.featured > .elementor-column-wrap, .cs-page-region .cs-option-card.featured > .elementor-widget-wrap { position: static; }
+.cs-page-region .cs-featured-badge { display: inline-block; background: var(--ink); color: var(--paper); padding: 5px 14px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: var(--inset); white-space: nowrap; }
+.cs-page-region .cs-option-tag { font-size: 12px; font-weight: 600; color: var(--ink-60); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 16px; }
+.cs-page-region .cs-option-card h3 { font-size: 22px; font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 12px; color: var(--ink); }
+.cs-page-region .cs-option-card .lede { font-size: 15px; color: var(--ink-60); line-height: 1.55; margin: 0 0 24px; }
+.cs-page-region .cs-option-card ul { list-style: none !important; margin: 0 !important; padding: 0 !important; display: grid !important; gap: 10px !important; }
+.cs-page-region .cs-option-card li { display: grid !important; grid-template-columns: 18px 1fr; align-items: start; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--ink); margin: 0 !important; padding: 0 !important; }
+.cs-page-region .cs-option-card li svg { flex: none; margin-top: 3px; }
+.cs-page-region .cs-option-card li.con { color: var(--ink-60); }
+.cs-page-region .cs-option-card li.pro svg { color: var(--purple); }
+.cs-page-region .cs-option-card li.con svg { color: var(--ink-40); }
+.cs-page-region .cs-option-card a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--ink-40); }
+
+/* 4-step "how it works" cards (numbered eyebrow) */
+.cs-page-region .cs-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+@media (max-width: 1024px) { .cs-page-region .cs-steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .cs-page-region .cs-steps { grid-template-columns: 1fr; } }
+.cs-page-region .cs-step { background: var(--cream-2); border: 1px solid var(--line); border-radius: 16px; padding: 32px 28px; }
+.cs-page-region .cs-step-num { font-size: 11px; font-weight: 600; color: var(--ink-60); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px; display: inline-flex; align-items: center; gap: 6px; }
+.cs-page-region .cs-step-num::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--grad); }
+.cs-page-region .cs-step h4 { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 8px; color: var(--ink); }
+.cs-page-region .cs-step p { font-size: 14px; color: var(--ink-60); line-height: 1.55; margin: 0; }
+
+/* Pricing 2-col block (left: copy + CTA; right: itemized) */
+.cs-page-region .cs-pricing-block { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; padding: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+@media (max-width: 1024px) { .cs-page-region .cs-pricing-block { grid-template-columns: 1fr; gap: 40px; padding: 40px; } }
+.cs-page-region .cs-pricing-left h3 { font-size: 32px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 16px; color: var(--ink); }
+.cs-page-region .cs-pricing-left h3 .accent { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.cs-page-region .cs-pricing-left p { font-size: 16px; color: var(--ink-60); line-height: 1.6; margin: 0 0 24px; }
+.cs-page-region .cs-pricing-right { background: var(--cream); border: 1px solid var(--line); border-radius: 16px; padding: 32px; }
+.cs-page-region .cs-pricing-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.cs-page-region .cs-pricing-row:last-child { border-bottom: none; padding-bottom: 0; }
+.cs-page-region .cs-pricing-row .label { color: var(--ink-60); }
+.cs-page-region .cs-pricing-row .value { color: var(--ink); font-weight: 500; }
+.cs-page-region .cs-pricing-row.savings { font-weight: 600; }
+.cs-page-region .cs-pricing-row.savings .value { color: var(--coral); }
+
+/* FAQ accordion (using <details>) */
+.cs-page-region .cs-faq { display: grid; gap: 12px; }
+.cs-page-region .cs-faq details { background: var(--cream); border: 1px solid var(--line); border-radius: 12px; padding: 0; transition: border-color 150ms ease; }
+.cs-page-region .cs-faq details[open] { border-color: var(--line-strong); }
+.cs-page-region .cs-faq summary { padding: 24px 28px; font-size: 17px; font-weight: 500; line-height: 1.4; letter-spacing: -0.01em; color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.cs-page-region .cs-faq summary::-webkit-details-marker { display: none; }
+.cs-page-region .cs-faq summary::after { content: "+"; font-size: 24px; color: var(--ink-60); font-weight: 400; transition: transform 150ms ease; flex: none; }
+.cs-page-region .cs-faq details[open] summary::after { content: "−"; }
+.cs-page-region .cs-faq p { padding: 0 28px 24px; font-size: 15px; line-height: 1.65; color: var(--ink-60); margin: 0; max-width: 70ch; }
+.cs-page-region .cs-faq strong { color: var(--ink); font-weight: 600; }
+
+/* Research callout — featured CTA card linking to /vacation-rental-seo/ */
+.cs-page-region .cs-research-callout { background: var(--cream); border: 1px solid var(--line); border-radius: 16px; padding: 32px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; margin-top: 48px; }
+@media (max-width: 768px) { .cs-page-region .cs-research-callout { grid-template-columns: 1fr; gap: 20px; } }
+.cs-page-region .cs-research-callout h3 { font-size: 22px; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; margin: 0 0 8px; color: var(--ink); }
+.cs-page-region .cs-research-callout p { font-size: 14px; color: var(--ink-60); line-height: 1.6; margin: 0; max-width: 60ch; }
+
+/* Section helpers used by partner pages */
+.cs-page-region .cs-section-cream-2 { background: var(--cream-2); }
+
+/* Section-scoped default link styling: keep links readable in body content */
+.cs-page-region .elementor-widget-text-editor a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--ink-40); }
+.cs-page-region .elementor-widget-text-editor a:hover { text-decoration-color: var(--ink); }
+
+/* ============================================================
+   15. NOTES
+   To opt a page into the design system, set page template to
+   elementor_canvas. functions.php auto-wraps the content in
+   <div class="cs-page-region">, body class adds .cs-page,
+   and all the rules above scope to .cs-page-region.
+   ============================================================ */
